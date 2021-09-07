@@ -1,4 +1,4 @@
-const sum = require('./calc');
+const add = require('./calc');
 
 test('String calculator', () => {
   expect(add("")).toBe(0);
