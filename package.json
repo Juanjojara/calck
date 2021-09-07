@@ -1,0 +1,26 @@
+{
+  "name": "calck",
+  "version": "1.0.0",
+  "description": "calculator kata",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^27.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juanjojara/calck.git"
+  },
+  "keywords": [
+    "tdd"
+  ],
+  "author": "Juan José Jara Laconich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juanjojara/calck/issues"
+  },
+  "homepage": "https://github.com/Juanjojara/calck#readme"
+}
