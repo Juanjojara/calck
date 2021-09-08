@@ -4,12 +4,16 @@ function add(numbers){
     }
     if (numbers.length > 0){
         const numberList = numbers.split(",");
-        if (numberList.length === 1){
-            return parseInt(numberList[0]);
-        }else{
-            return parseInt(numberList[0]) + parseInt(numberList[1]);
-        }
+        return addFromAray(numberList);
     }
+}
+
+function addFromAray(numberList){
+    var result = 0;
+    numberList.forEach(element => {
+        result += parseInt(element);
+    });
+    return result;
 }
 
 module.exports = add;
