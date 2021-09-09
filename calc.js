@@ -3,7 +3,7 @@ function add(numbers){
         return 0;
     }
     if (numbers.length > 0){
-        const numberList = numbers.split(",");
+        const numberList = numbers.split(new RegExp('[,\n]'));
         return addFromAray(numberList);
     }
 }
