@@ -1,3 +1,4 @@
+const { expect } = require('@jest/globals');
 const add = require('./calc');
 
 test('Limited string calculator', () => {
@@ -8,4 +9,13 @@ test('Limited string calculator', () => {
 
 test('Unlimited string calculator', () => {
     expect(add("5,3,6,8,11")).toBe(33);
+    var randArrayNumber = Math.floor(Math.random() * 1000);
+    var randNumbers = randArrayNumber.toString();
+    var randResult = randArrayNumber;
+    for (var i = 0; i < randArrayNumber; i++){
+        var newRandNumber = (Math.floor(Math.random() * 100));
+        randNumbers = randNumbers + ", " + newRandNumber;
+        randResult += newRandNumber;
+    }
+    expect(add(randNumbers)).toBe(randResult);
   });
