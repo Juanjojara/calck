@@ -3,7 +3,12 @@ function add(numbers){
         return 0;
     }
     if (numbers.length > 0){
-        const numberList = numbers.split(new RegExp('[,\n]'));
+        var regExpString = '[,\n]';
+        if (numbers.startsWith('//')){
+            regExpString = calculateNewRegExp(numbers);
+            numbers = calculateNewNumbers(numbers);
+        }
+        const numberList = numbers.split(new RegExp(regExpString));
         return addFromAray(numberList);
     }
 }
@@ -14,6 +19,14 @@ function addFromAray(numberList){
         result += parseInt(element);
     });
     return result;
+}
+
+function calculateNewRegExp(numbers){
+    return '[' + numbers[2] + '\n]';
+}
+
+function calculateNewNumbers(numbers){
+    return numbers.substring(numbers.indexOf('\n')+1);
 }
 
 module.exports = add;

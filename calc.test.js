@@ -25,4 +25,9 @@ test('Step 3: Support new line separator', () => {
     expect(add("1\n2,3")).toBe(6);
     expect(add("1,2\n3")).toBe(6);
     expect(add("1\n2,3\n1\n2,3")).toBe(12);
-  });
+});
+
+test('Step 4: Support different delimiters', () => {
+    expect(add("//;\n10;3")).toBe(13);
+    expect(add("//;\n1\n2;3\n1\n2;3")).toBe(12);
+});
