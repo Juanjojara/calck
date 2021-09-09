@@ -18,4 +18,8 @@ test('Step 2: Unlimited string calculator', () => {
         randResult += newRandNumber;
     }
     expect(add(randNumbers)).toBe(randResult);
-});  
+});
+
+test('Step 3: Support new line separator', () => {
+    expect(add("10\n3")).toBe(13);
+  });
