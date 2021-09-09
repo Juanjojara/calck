@@ -22,4 +22,6 @@ test('Step 2: Unlimited string calculator', () => {
 
 test('Step 3: Support new line separator', () => {
     expect(add("10\n3")).toBe(13);
+    expect(add("1\n2,3")).toBe(6);
+    expect(add("1,2\n3")).toBe(6);
   });
