@@ -30,4 +30,9 @@ test('Step 3: Support new line separator', () => {
 test('Step 4: Support different delimiters', () => {
     expect(add("//;\n10;3")).toBe(13);
     expect(add("//;\n1\n2;3\n1\n2;3")).toBe(12);
+    const numbers = "//|\n1\n2|3\n1\n2|3";
+    if (numbers.startsWith('//')){
+        expect(numbers).toMatch(/^\/{2}.\n/);
+        expect(add(numbers)).toBe(12);
+    }
 });
