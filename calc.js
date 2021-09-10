@@ -17,6 +17,9 @@ function addFromAray(numberList){
     var result = 0;
     numberList.forEach(element => {
         result += parseInt(element);
+        if (parseInt(element)<0){
+            throw new Error('negatives not allowed: ' + element);
+        }
     });
     return result;
 }
