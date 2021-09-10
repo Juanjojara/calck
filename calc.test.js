@@ -1,4 +1,4 @@
-const { expect } = require('@jest/globals');
+const { expect, test } = require('@jest/globals');
 const add = require('./calc');
 
 test('Step 1: Limited string calculator', () => {
@@ -35,4 +35,8 @@ test('Step 4: Support different delimiters', () => {
         expect(numbers).toMatch(/^\/{2}.\n/);
         expect(add(numbers)).toBe(12);
     }
+});
+
+test('Step 5: negative numbers', () => {
+    expect(() => add("10,-3")).toThrow('negatives not allowed: -3');
 });
