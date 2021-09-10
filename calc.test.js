@@ -39,4 +39,5 @@ test('Step 4: Support different delimiters', () => {
 
 test('Step 5: negative numbers', () => {
     expect(() => add("10,-3")).toThrow('negatives not allowed: -3');
+    expect(() => add("10,-3,2,5,-6,1")).toThrow('negatives not allowed: -3,-6');
 });
