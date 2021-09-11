@@ -3,12 +3,8 @@ function add(numbers){
         return 0;
     }
     if (numbers.length > 0){
-        var regExpString = '[,\n]';
-        if (numbers.startsWith('//')){
-            regExpString = calculateNewRegExp(numbers);
-            numbers = calculateNewNumbers(numbers);
-        }
-        const numberList = numbers.split(new RegExp(regExpString));
+        var regExpString = calculateRegExp(numbers);
+        const numberList = calculateNumbers(numbers).split(new RegExp(regExpString));
         return addFromAray(numberList);
     }
 }
@@ -22,12 +18,18 @@ function addFromAray(numberList){
     return result;
 }
 
-function calculateNewRegExp(numbers){
-    return '[' + numbers[2] + '\n]';
+function calculateRegExp(numbers){
+    if (numbers.startsWith('//')){
+        return '[' + numbers[2] + '\n]';
+    }
+    return '[,\n]';
 }
 
-function calculateNewNumbers(numbers){
-    return numbers.substring(numbers.indexOf('\n')+1);
+function calculateNumbers(numbers){
+    if (numbers.startsWith('//')){
+        return numbers.substring(numbers.indexOf('\n')+1);
+    }
+    return numbers;
 }
 
 function checkNegativeNumbers(numberList){
