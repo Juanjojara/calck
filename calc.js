@@ -17,7 +17,9 @@ function addFromAray(numberList){
     var result = 0;
     checkNegativeNumbers(numberList);
     numberList.forEach(element => {
-        result += parseInt(element);
+        if (parseInt(element)<=1000){
+            result += parseInt(element);
+        }
     });
     return result;
 }
