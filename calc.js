@@ -19,16 +19,8 @@ function addFromAray(numberList){
 }
 
 function calculateRegExp(numbers){
-    const escapedChars = ['*', '.', '|'];
     if (numbers.startsWith('//[')){
-        var newDelimiter = numbers.substring(3, numbers.indexOf(']'));
-        const delimiterLength = newDelimiter.length;
-        if (escapedChars.includes(newDelimiter[0])){
-            newDelimiter = '\\'+newDelimiter[0];
-        }else{
-            newDelimiter = newDelimiter[0];
-        }
-        return newDelimiter + '{' + delimiterLength + '}';
+        return calculateDelimiter(numbers) + '|\n';
     }
     
     if (numbers.startsWith('//')){
@@ -63,6 +55,18 @@ function ignoreBigNumber(number){
         return number;
     }
     return 0;
+}
+
+function calculateDelimiter(numbers){
+    const escapedChars = ['*', '.', '|'];
+    var newDelimiter = numbers.substring(3, numbers.indexOf(']'));
+    const delimiterLength = newDelimiter.length;
+    if (escapedChars.includes(newDelimiter[0])){
+        newDelimiter = '\\'+newDelimiter[0];
+    }else{
+        newDelimiter = newDelimiter[0];
+    }
+    return newDelimiter + '{' + delimiterLength + '}';
 }
 
 module.exports = add;
