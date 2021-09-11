@@ -17,9 +17,7 @@ function addFromAray(numberList){
     var result = 0;
     checkNegativeNumbers(numberList);
     numberList.forEach(element => {
-        if (parseInt(element)<=1000){
-            result += parseInt(element);
-        }
+        result += parseInt(ignoreBigNumber(element));
     });
     return result;
 }
@@ -44,6 +42,13 @@ function checkNegativeNumbers(numberList){
     if (foundNegativeNumbers){
         throw new Error(negativeNumbersMsg.slice(0, -1));
     }
+}
+
+function ignoreBigNumber(number){
+    if (parseInt(number)<=1000){
+        return number;
+    }
+    return 0;
 }
 
 module.exports = add;
