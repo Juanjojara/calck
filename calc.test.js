@@ -47,3 +47,8 @@ test('Step 6: ignore big numbers', () => {
     expect(add("1,2005,3,1000,2")).toBe(1006);
     expect(add("1001")).toBe(0);
 });
+
+test('Step 7: delimiters length', () => {
+    expect(add("//[***]\n1***2***3")).toBe(6);
+    expect(add("//[||]\n1\n2||3\n1\n2||3")).toBe(12);
+});

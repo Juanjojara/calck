@@ -3,12 +3,8 @@ function add(numbers){
         return 0;
     }
     if (numbers.length > 0){
-        var regExpString = '[,\n]';
-        if (numbers.startsWith('//')){
-            regExpString = calculateNewRegExp(numbers);
-            numbers = calculateNewNumbers(numbers);
-        }
-        const numberList = numbers.split(new RegExp(regExpString));
+        var regExpString = calculateRegExp(numbers);
+        const numberList = calculateNumbers(numbers).split(new RegExp(regExpString));
         return addFromAray(numberList);
     }
 }
@@ -22,12 +18,22 @@ function addFromAray(numberList){
     return result;
 }
 
-function calculateNewRegExp(numbers){
-    return '[' + numbers[2] + '\n]';
+function calculateRegExp(numbers){
+    if (numbers.startsWith('//[')){
+        return calculateDelimiter(numbers) + '|\n';
+    }
+    
+    if (numbers.startsWith('//')){
+        return numbers[2] + '|\n';
+    }
+    return ',|\n';
 }
 
-function calculateNewNumbers(numbers){
-    return numbers.substring(numbers.indexOf('\n')+1);
+function calculateNumbers(numbers){
+    if (numbers.startsWith('//')){
+        return numbers.substring(numbers.indexOf('\n')+1);
+    }
+    return numbers;
 }
 
 function checkNegativeNumbers(numberList){
@@ -49,6 +55,18 @@ function ignoreBigNumber(number){
         return number;
     }
     return 0;
+}
+
+function calculateDelimiter(numbers){
+    const escapedChars = ['*', '.', '|'];
+    var newDelimiter = numbers.substring(3, numbers.indexOf(']'));
+    const delimiterLength = newDelimiter.length;
+    if (escapedChars.includes(newDelimiter[0])){
+        newDelimiter = '\\'+newDelimiter[0];
+    }else{
+        newDelimiter = newDelimiter[0];
+    }
+    return newDelimiter + '{' + delimiterLength + '}';
 }
 
 module.exports = add;
