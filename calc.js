@@ -24,9 +24,9 @@ function calculateRegExp(numbers){
     }
     
     if (numbers.startsWith('//')){
-        return '[' + numbers[2] + '\n]';
+        return numbers[2] + '|\n';
     }
-    return '[,\n]';
+    return ',|\n';
 }
 
 function calculateNumbers(numbers){
