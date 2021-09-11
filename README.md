@@ -10,5 +10,5 @@ npm install
 ## Run tests
 npm test
 
-# #Run application
+## Run application
 npm start
