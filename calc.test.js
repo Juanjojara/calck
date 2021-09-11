@@ -41,3 +41,8 @@ test('Step 5: negative numbers', () => {
     expect(() => add("10,-3")).toThrow('negatives not allowed: -3');
     expect(() => add("10,-3,2,5,-6,1")).toThrow('negatives not allowed: -3,-6');
 });
+
+test('Step 6: ignore big numbers', () => {
+    expect(add("10,3,1001")).toBe(13);
+    expect(add("1,2005,3,1000,2")).toBe(1006);
+});
