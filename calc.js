@@ -19,6 +19,18 @@ function addFromAray(numberList){
 }
 
 function calculateRegExp(numbers){
+    const escapedChars = ['*', '.', '|'];
+    if (numbers.startsWith('//[')){
+        var newDelimiter = numbers.substring(3, numbers.indexOf(']'));
+        const delimiterLength = newDelimiter.length;
+        if (escapedChars.includes(newDelimiter[0])){
+            newDelimiter = '\\'+newDelimiter[0];
+        }else{
+            newDelimiter = newDelimiter[0];
+        }
+        return newDelimiter + '{' + delimiterLength + '}';
+    }
+    
     if (numbers.startsWith('//')){
         return '[' + numbers[2] + '\n]';
     }
