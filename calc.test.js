@@ -45,4 +45,5 @@ test('Step 5: negative numbers', () => {
 test('Step 6: ignore big numbers', () => {
     expect(add("10,3,1001")).toBe(13);
     expect(add("1,2005,3,1000,2")).toBe(1006);
+    expect(add("1001")).toBe(0);
 });
